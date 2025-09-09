@@ -283,7 +283,7 @@
           <label for="chk-${it.id}">${it.name}<br><small>${it.unit}</small></label>
           <div class="qty">
             <button aria-label="Diminuir" data-act="dec" data-id="${it.id}">–</button>
-            <input type="number" min="0" step="${it.step}" value="${s.qty}" id="qty-${it.id}" />
+            <input type="text" min="0" step="${it.step}" value="${s.qty}" id="qty-${it.id}" />
             <button aria-label="Aumentar" data-act="inc" data-id="${it.id}">+</button>
           </div>
           <input type="number" min="0" step="0.01" value="${s.price.toFixed(2)}" id="prc-${it.id}" title="Preço por ${it.unit}" />
