@@ -387,9 +387,14 @@
         CATALOG.forEach(it=> state.items[it.id] = {enabled:false, qty:0, price:it.price});
         renderItems(); calc(); saveToURL();
       });
-      $('#fakeGen').addEventListener('click', ()=>{
-        alert('Este botão é apenas ilustrativo nesta versão estática.');
-      });
+      $('#fakeGen').addEventListener('click', async ()=>{
+  const prompt = montarPrompt(state, CATALOG);
+  const imgUrl = await gerarImagemGemini(prompt);
+  if (imgUrl) {
+    const box = document.querySelector('.hero-i .img');
+    box.innerHTML = `<img src="${imgUrl}" alt="Café da manhã gerado" style="max-width:100%; border-radius:12px"/>`;
+  }
+});
       $('#rate').addEventListener('input', ()=>{ state.rate = Number($('#rate').value)||0; calc(); saveToURL(); })
       $('#copyLink').addEventListener('click', async ()=>{
         saveToURL();
